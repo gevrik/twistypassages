@@ -18,6 +18,7 @@ return [
         'resource_providers' => [
             'BjyAuthorize\Provider\Resource\Config' => [
                 'profile' => [],
+                'story' => [],
             ],
         ],
 
@@ -27,6 +28,7 @@ return [
                     // allow guests and users (and admins, through inheritance)
                     ['user', 'profile', ['detail']],
                     ['admin', 'profile', ['update']],
+                    [['guest', 'user'], 'story', ['index', 'detail']],
                 ],
 
                 'deny' => [
@@ -46,6 +48,7 @@ return [
                 ['controller' => 'TmoAuth\Controller\User', 'action' => ['logout', 'changepassword'], 'roles' => 'user'],
                 ['controller' => 'Application\Controller\Index', 'roles' => ['guest', 'user']],
                 ['controller' => 'TwistyPassages\Controller\Profile', 'roles' => ['user']],
+                ['controller' => 'TwistyPassages\Controller\Story', 'action' => ['index', 'detail'], 'roles' => ['guest', 'user']],
                 ['controller' => 'DoctrineModule\Controller\Cli', 'roles' => ['guest']],
             ],
 

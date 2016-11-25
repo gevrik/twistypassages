@@ -17,13 +17,29 @@ return array(
                     ),
                 ),
             ),
+            'story' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/story[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'TwistyPassages\Controller',
+                        'controller'    => 'TwistyPassages\Controller\Story',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
         ),
         'factories' => array(
-            'TwistyPassages\Controller\Profile' => 'TwistyPassages\Factory\ProfileControllerFactory'
+            'TwistyPassages\Controller\Profile' => 'TwistyPassages\Factory\ProfileControllerFactory',
+            'TwistyPassages\Controller\Story' => 'TwistyPassages\Factory\StoryControllerFactory'
         ),
     ),
     'service_manager' => array(
@@ -57,6 +73,22 @@ return array(
                     array(
                         'label' => _('Detail'),
                         'route' => 'profile',
+                        'action' => 'detail',
+                    ),
+                ),
+            ),
+            array(
+                'label' => _('Stories'),
+                'route' => 'story',
+                'pages' => array(
+                    array(
+                        'label' => _('Create'),
+                        'route' => 'story',
+                        'action' => 'create',
+                    ),
+                    array(
+                        'label' => _('Detail'),
+                        'route' => 'story',
                         'action' => 'detail',
                     ),
                 ),

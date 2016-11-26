@@ -29,6 +29,7 @@ return [
                     ['user', 'profile', ['detail']],
                     ['admin', 'profile', ['update']],
                     [['guest', 'user'], 'story', ['index', 'detail']],
+                    ['user', 'story', ['create']],
                 ],
 
                 'deny' => [
@@ -49,6 +50,7 @@ return [
                 ['controller' => 'Application\Controller\Index', 'roles' => ['guest', 'user']],
                 ['controller' => 'TwistyPassages\Controller\Profile', 'roles' => ['user']],
                 ['controller' => 'TwistyPassages\Controller\Story', 'action' => ['index', 'detail'], 'roles' => ['guest', 'user']],
+                ['controller' => 'TwistyPassages\Controller\Story', 'action' => ['create'], 'roles' => ['user']],
                 ['controller' => 'DoctrineModule\Controller\Cli', 'roles' => ['guest']],
             ],
 

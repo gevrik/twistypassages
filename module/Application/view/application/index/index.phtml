@@ -1,9 +1,12 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Twisty Passages')); ?></h1>
-    <p><?php echo sprintf($this->translate('Welcome to this community-driven platform for interactive stories. Create your own stories with the easy-to-use yet powerful story editor for other members to enjoy!')); ?></p>
-    <p>
-        <a class="btn btn-success btn-lg" href="#"><?php echo $this->translate('Browse stories') ?> &raquo;</a>
-        <a class="btn btn-success btn-lg" href="#"><?php echo $this->translate('Create a new story') ?> &raquo;</a>
-        <a class="btn btn-success btn-lg" href="https://github.com/gevrik/twistypassages" target="_blank"><?php echo $this->translate('GitHub') ?> &raquo;</a>
-    </p>
-</div>
+<section class="jumbotron text-xs-center">
+    <div class="container">
+        <h1 class="jumbotron-heading"><?php echo sprintf($this->translate('Twisty Passages')); ?></h1>
+        <p class="lead text-muted"><?php echo sprintf($this->translate('Welcome to this community-driven platform for interactive stories. Create your own stories with the easy-to-use yet powerful story editor for other members to enjoy!')); ?></p>
+        <p>
+            <a href="<?php echo $this->url('story'); ?>" class="btn btn-primary"><?php echo $this->translate('Browse stories'); ?></a>
+            <a href="<?php echo $this->url('story', array('action' => 'create')); ?>" class="btn btn-secondary"><?php echo $this->translate('Create a story'); ?></a>
+        </p>
+    </div>
+</section>
+
+<?php echo $this->partial('twisty-passages/story/topten.phtml'); ?>

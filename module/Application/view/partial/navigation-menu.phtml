@@ -1,0 +1,8 @@
+<?php foreach ($this->container as $page): ?>
+    <a href="<?php echo $this->url($page->getRoute()); ?>" class="btn btn-info"><?php echo $page; ?></a>
+<?php endforeach; ?>
+<?php if ($this->zfcUserIdentity()) : ?>
+    <a href="<?php echo $this->url('zfcuser/logout'); ?>" class="btn btn-info"><?php echo $this->translate('Log-out'); ?></a>
+<?php else : ?>
+    <a href="<?php echo $this->url('zfcuser/login'); ?>" class="btn btn-info"><?php echo $this->translate('Log-in'); ?></a>
+<?php endif; ?>

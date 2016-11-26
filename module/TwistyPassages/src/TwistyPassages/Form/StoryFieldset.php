@@ -55,7 +55,7 @@ class StoryFieldset extends Fieldset implements InputFilterProviderInterface
                 ),
             ),
             'attributes' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce-textarea',
             ),
         ));
 

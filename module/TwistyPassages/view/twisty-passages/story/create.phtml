@@ -1,0 +1,42 @@
+<section class="jumbotron text-xs-center">
+    <div class="container">
+        <h1 class="jumbotron-heading"><?php echo sprintf($this->translate('Create a new story')); ?></h1>
+        <p class="lead text-muted"><?php echo sprintf($this->translate('Before you create a new story, take some time to think about what you want and be aware that your readers will expect some dedication!')); ?></p>
+    </div>
+</section>
+<div class="create-story text-muted">
+    <div class="container">
+        <?php
+
+        $form = $this->form; /** @var \Zend\Form\Form $form */
+
+        $form->setAttribute('action', $this->url('story', array('action' => 'create')));
+        $form->setAttribute('class', 'form-signin');
+        $form->prepare();
+        echo $this->form()->openTag($form);
+
+        ?>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('story')->get('name')); ?>
+            <?php echo $this->formElement($form->get('story')->get('name')); ?>
+            <?php echo $this->formElementErrors($form->get('story')->get('name'), array('class' => 'text-danger')) ?>
+        </div>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('story')->get('description')); ?>
+            <?php echo $this->formElement($form->get('story')->get('description')); ?>
+            <?php echo $this->formElementErrors($form->get('story')->get('description'), array('class' => 'text-danger')) ?>
+        </div>
+
+        <div class="form-group">
+            <?php echo $this->formLabel($form->get('story')->get('genre')); ?>
+            <?php echo $this->formElement($form->get('story')->get('genre')); ?>
+            <?php echo $this->formElementErrors($form->get('story')->get('genre'), array('class' => 'text-danger')) ?>
+        </div>
+
+        <?php echo $this->formElement($form->get('submit')); ?>
+
+        <?php echo $this->form()->closeTag(); ?>
+    </div>
+</div>

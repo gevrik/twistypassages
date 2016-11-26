@@ -1,0 +1,26 @@
+<section class="jumbotron text-xs-center">
+    <div class="container">
+        <h1 class="jumbotron-heading"><?php echo $this->story->getName(); ?></h1>
+        <h2><?php echo sprintf($this->translate('A story by %s'), $this->story->getAuthor()->getUser()->getDisplayname()); ?></h2>
+        <h3>
+            <?php echo sprintf(
+                $this->translate('Released in %s <small>created on %s and updated on %s</small>'),
+                \TwistyPassages\Entity\Story::$genreData[$this->story->getGenre()],
+                $this->story->getCreated()->format('Y/m/d'),
+                $this->story->getUpdated()->format('Y/m/d'));
+            ?>
+        </h3>
+        <p class="lead text-muted"><?php echo $this->story->getDescription(); ?></p>
+    </div>
+</section>
+
+<div class="detail-story text-muted">
+    <div class="container">
+        <p>
+            <a href="<?php echo $this->url('story', array('action' => 'read')); ?>" class="btn btn-primary btn-lg"><?php echo $this->translate('Read story'); ?></a>
+            <?php if ($this->zfcUserIdentity() && $this->zfcUserIdentity()->getProfile() == $this->story->getAuthor()) : ?>
+                <a href="<?php echo $this->url('story', array('action' => 'edit')); ?>" class="btn btn-success btn-lg"><?php echo $this->translate('Edit story'); ?></a>
+            <?php endif; ?>
+        </p>
+    </div>
+</div>

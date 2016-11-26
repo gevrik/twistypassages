@@ -1,0 +1,25 @@
+<div class="topnine text-muted">
+    <div class="container">
+
+        <div class="row">
+            <?php foreach ($this->toptenStories as $story) : /** @var \TwistyPassages\Entity\Story $story */ ?>
+                <div class="card">
+<!--                    <img class="card-img-top" src="..." alt="story card image">-->
+                    <div class="card-block text-xs-center">
+                        <h3 class="card-title"><?php echo $story->getName(); ?></h3>
+                        <p class="card-text"><?php echo $story->getDescription(); ?></p>
+                        <a href="<?php echo $this->url('story', array('action' => 'detail', 'id' => $story->getId())); ?>"
+                           class="btn btn-primary btn-sm">
+                            <?php echo $this->translate('Details'); ?>
+                        </a>
+                        <a href="<?php echo $this->url('story', array('action' => 'read', 'id' => $story->getId())); ?>"
+                           class="btn btn-secondary btn-sm">
+                            <?php echo $this->translate('Read'); ?>
+                        </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+    </div>
+</div>

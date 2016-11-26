@@ -1,20 +1,25 @@
-<ul class="breadcrumb">
+<ol class="breadcrumb pull-right">
     <?php
     // iterate through the pages
     foreach ($this->pages as $key => $page):
         ?>
-        <li>
-            <?php
-            // if this isn't the last page, add a link and the separator
-            if ($key < count($this->pages) - 1):
-                ?>
+        <?php
+        // if this isn't the last page, add a link and the separator
+        if ($key < count($this->pages) - 1):
+            ?>
+            <li class="breadcrumb-item active">
                 <a href="<?php echo $page->getHref(); ?>"><?php echo $this->translate($page->getLabel()); ?></a>
-                <?php
-            // otherwise, just output the name
-            else:
-                ?>
-                <?php echo $this->translate($page->getLabel()); ?>
-            <?php endif; ?>
+            </li>
+            <?php
+        // otherwise, just output the name
+        else:
+            ?>
+        <li class="breadcrumb-item">
+            <?php echo $this->translate($page->getLabel()); ?>
         </li>
+        <?php endif; ?>
     <?php endforeach; ?>
-</ul>
+    <p class="float-xs-right">
+        <a href="#">Back to top</a>
+    </p>
+</ol>

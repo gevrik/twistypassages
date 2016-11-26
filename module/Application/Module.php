@@ -26,9 +26,9 @@ class Module
             ->setLocale(\Locale::DEFAULT_LOCALE)
             ->setFallbackLocale('en_US');
 
-//        $strategy = new RedirectionStrategy();
-//        $strategy->setRedirectUri('/user');
-//        $eventManager->attach($strategy);
+        $strategy = new RedirectionStrategy();
+        $strategy->setRedirectUri('/user');
+        $eventManager->attach($strategy);
     }
 
     public function getConfig()

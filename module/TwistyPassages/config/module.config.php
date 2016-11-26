@@ -32,6 +32,21 @@ return array(
                     ),
                 ),
             ),
+            'vote' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/vote[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'TwistyPassages\Controller',
+                        'controller'    => 'TwistyPassages\Controller\Vote',
+                        'action'        => 'vote',
+                    ),
+                ),
+            ),
         ),
     ),
     'controllers' => array(
@@ -39,7 +54,8 @@ return array(
         ),
         'factories' => array(
             'TwistyPassages\Controller\Profile' => 'TwistyPassages\Factory\ProfileControllerFactory',
-            'TwistyPassages\Controller\Story' => 'TwistyPassages\Factory\StoryControllerFactory'
+            'TwistyPassages\Controller\Story' => 'TwistyPassages\Factory\StoryControllerFactory',
+            'TwistyPassages\Controller\Vote' => 'TwistyPassages\Factory\VoteControllerFactory'
         ),
     ),
     'service_manager' => array(
@@ -67,7 +83,7 @@ return array(
     'navigation' => array(
         'default' => array(
             array(
-                'label' => _('Profiles'),
+                'label' => _('Profile'),
                 'route' => 'profile',
                 'pages' => array(
                     array(

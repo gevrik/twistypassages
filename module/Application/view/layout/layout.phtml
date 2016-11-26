@@ -13,31 +13,59 @@
         <!-- Le styles -->
         <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
                         ->prependStylesheet($this->basePath('css/style.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
-                        ->prependStylesheet($this->basePath('css/bootstrap.min.css')) ?>
+                        ->prependStylesheet($this->basePath('css/bootstrap-flex.min.css'))
+                        ->prependStylesheet($this->basePath('css/tether.min.css')) ?>
 
         <!-- Scripts -->
         <?php echo $this->headScript()
             ->prependFile($this->basePath('js/site.js'))
             ->prependFile($this->basePath('js/tinymce/tinymce.min.js'))
-            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/bootstrap-flex.min.js'))
+            ->prependFile($this->basePath('js/tether.min.js'))
             ->prependFile($this->basePath('js/jquery.min.js'))
-            ->prependFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath('js/html5shiv.min.js'),   'text/javascript', array('conditional' => 'lt IE 9',))
         ; ?>
 
     </head>
     <body>
-        <div class="container">
 
-            <!-- flash messages -->
-            <div id="flash-messages">
-                <?php echo $this->partial('partial/flashmessenger.phtml'); ?>
+        <div class="navbar-collapse collapse inverse" id="navbar-header">
+            <div class="container-fluid">
+                <?php echo $this->navigation('navigation')
+                    ->menu()
+                    ->setMinDepth(0)
+                    ->setMaxDepth(0)
+                    ->setPartial('partial/navigation-menu')
+                    ->setAddClassToListItem(true)
+                    ->setUlClass('nav navbar-nav btn-group');
+                ?>
             </div>
+        </div>
+        <div class="navbar navbar-static-top navbar-dark bg-inverse">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header" aria-expanded="false" aria-label="Toggle navigation"></button>
+                <a href="#" class="navbar-brand">Twisty Passages</a>
+            </div>
+        </div>
 
-            <?php echo $this->content; ?>
+        <!-- flash messages -->
+        <div id="flash-messages">
+            <?php echo $this->partial('partial/flashmessenger.phtml'); ?>
+        </div>
 
-        </div> <!-- /container -->
+        <?php echo $this->content; ?>
+
+        <footer class="text-muted">
+            <div class="container">
+                <!-- bread-crumbs -->
+                <?php
+                echo $this->navigation('navigation')
+                    ->breadcrumbs()
+                    ->setMinDepth(0)
+                    ->setPartial('partial/breadcrumb.phtml');
+                ?>
+            </div>
+        </footer>
+
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

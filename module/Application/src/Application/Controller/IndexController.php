@@ -9,13 +9,44 @@
 
 namespace Application\Controller;
 
+use TwistyPassages\Entity\Story;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class IndexController extends AbstractActionController
 {
+
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $entityManager;
+
+
+    /**
+     * IndexController constructor.
+     * @param \Doctrine\ORM\EntityManager $entityManager
+     */
+    public function __construct(
+        $entityManager
+    )
+    {
+        $this->entityManager = $entityManager;
+    }
+
     public function indexAction()
     {
-        return new ViewModel();
+        $toptenStories = $this->entityManager->getRepository('TwistyPassages\Entity\Story')->findBy(
+            array(
+                'status' => Story::STATUS_ACTIVE
+            ),
+            array(
+                'likes' => 'desc'
+            ),
+            9
+        );
+        return new ViewModel(array(
+            'toptenStories' => $toptenStories
+        ));
     }
+
 }

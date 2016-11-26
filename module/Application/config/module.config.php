@@ -73,8 +73,8 @@ return array(
         ),
     ),
     'controllers' => array(
-        'invokables' => array(
-            'Application\Controller\Index' => 'Application\Controller\IndexController'
+        'factories' => array(
+            'Application\Controller\Index' => 'Application\Factory\IndexControllerFactory'
         ),
     ),
     'view_manager' => array(

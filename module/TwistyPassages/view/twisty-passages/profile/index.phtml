@@ -1,0 +1,17 @@
+<section class="jumbotron text-xs-center">
+    <div class="container">
+        <h1 class="jumbotron-heading"><?php echo sprintf($this->translate('Profile for [%s]'), $this->zfcUserIdentity()->getUsername()); ?></h1>
+        <p class="lead text-muted"><?php echo sprintf($this->translate('Here you can change some profile settings and review your story progress!')); ?></p>
+        <p>
+            <a href="<?php echo $this->url('zfcuser/changepassword'); ?>" class="btn btn-primary"><?php echo $this->translate('Change password'); ?></a>
+            <a href="<?php echo $this->url('story', array('action' => 'list')); ?>" class="btn btn-secondary"><?php echo $this->translate('Stories you are reading'); ?></a>
+            <a href="<?php echo $this->url('story', array('action' => 'authorlist')); ?>" class="btn btn-secondary"><?php echo $this->translate('Stories you wrote'); ?></a>
+        </p>
+    </div>
+</section>
+
+<div class="detail-profile text-muted">
+    <div class="container">
+
+    </div>
+</div>

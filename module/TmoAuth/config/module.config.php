@@ -90,26 +90,6 @@ return array(
             __DIR__ . '/../view',
         ),
     ),
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => _('User'),
-                'route' => 'zfcuser',
-                'pages' => array(
-                    array(
-                        'label' => _('Log-in'),
-                        'route' => 'zfcuser/login',
-                        'action' => 'login',
-                    ),
-                    array(
-                        'label' => _('Register'),
-                        'route' => 'zfcuser/register',
-                        'action' => 'register',
-                    ),
-                ),
-            ),
-        ),
-    ),
     'doctrine' => array(
         'driver' => array(
             // overriding zfc-user-doctrine-orm's config
